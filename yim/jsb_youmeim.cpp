@@ -339,6 +339,7 @@ enum YouMeIMCommand
 	CMD_GET_ROOM_INFO = 27,
 	CMD_LEAVE_ALL_ROOM = 28,        // 离开所有房间
 	CMD_GET_FORBID_RECORD = 31,
+	CMD_GET_FORBIDDEN_INFO=32,
 
 	//关系链管理增加
 	CMD_REGISTER_USER_PROFILE = 36,
@@ -2235,7 +2236,7 @@ static bool js_cocos2dx_extension_IM_DownloadAudioFile(se::State& s) {
 		seval_to_std_string(args[1], &strSavePath);
 		//调用离开聊天室
 
-		int iErrorCode = IM_DownloadFile(CYouMeIMJsWrapper::str_to_uint64(iSerial.c_str()), UTF8TOPlatString(strSavePath).c_str(),FileType_Audio);
+		int iErrorCode = IM_DownloadFile(CYouMeIMJsWrapper::str_to_uint64(iSerial.c_str()), UTF8TOPlatString(strSavePath).c_str());
 		s.rval().setInt32(iErrorCode);
 		return true;
 	}
@@ -2256,7 +2257,7 @@ static bool js_cocos2dx_extension_IM_DownloadFileByUrl(se::State& s) {
 		std::string strSavePath;
 		seval_to_std_string(args[1], &strSavePath);
 		//调用离开聊天室
-		int iErrorCode = IM_DownloadFileByURL(UTF8TOPlatString(strUrl).c_str(), UTF8TOPlatString(strSavePath).c_str());
+		int iErrorCode = IM_DownloadFileByURL(UTF8TOPlatString(strUrl).c_str(), UTF8TOPlatString(strSavePath).c_str(),FileType_Audio);
 		s.rval().setInt32(iErrorCode);
 		return true;
 	}
